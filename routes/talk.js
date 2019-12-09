@@ -106,12 +106,13 @@ router.get("/attendee", async (req, res) => {
 
 
 router.post("/cancel", async (req, res) => {
+
+  
   const data = req.body;
+ 
   try {
 
-    await modelAttendeeTalk.findOneAndDelete({
-      talkId: data.talkId
-    })
+    await model.findByIdAndDelete(data.talkId)
     return res.json({
       status:true
     });

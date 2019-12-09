@@ -104,6 +104,24 @@ router.get("/attendee", async (req, res) => {
   }
 });
 
+
+router.post("/cancel", async (req, res) => {
+  const data = req.body;
+  try {
+
+    await modelAttendeeTalk.findOneAndDelete({
+      talkId: data.talkId
+    })
+    return res.json({
+      status:true
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "an error occured when removing data"
+    });
+  }
+});
+
 const generateError = err => {
   let message = "";
   for (let i = 0; i < err.length; i++) {

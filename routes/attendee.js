@@ -5,9 +5,7 @@ const Joi = require("@hapi/joi");
 
 const schema = Joi.object({
   name: Joi.string().required(),
-
   number: Joi.string().required(),
-
   email: Joi.string().email()
 });
 router.post("/", async (req, res) => {
